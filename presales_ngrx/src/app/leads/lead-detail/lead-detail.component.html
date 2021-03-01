@@ -1,0 +1,123 @@
+<form class="container mt-5" [formGroup]="leadForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col">
+      <label for="customercontent" class="font-weight-bolder">Customer</label>
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom01">Customer name</label>
+            <input  type="text" class="form-control " formControlName="customername"  id="validationCustom01" list="customers" value="">
+            <div *ngIf="!leadForm.get('customername').invalid && leadForm.get('customername').errors && (leadForm.get('customername').dirty ||  leadForm.get('customername').touched)" id="validationServer05Feedback" class="invalid-feedback">
+              <small class="text-danger" *ngIf="leadForm.get('customername').hasError('required')">Please fill the field.</small>
+            </div>
+            <datalist id="customers" >
+                <option *ngFor="let customer of customers" >{{customer.projectName}}</option>
+
+            </datalist>
+
+        </div>
+      </div>
+
+        <div class="form-group">
+          <label for="inputAddress">Address</label>
+          <input type="text" formControlName="addressline1" class="form-control" id="inputAddress" placeholder="Type address">
+          <div *ngIf="!leadForm.get('addressline1').invalid && leadForm.get('addressline1').touched" id="validationServer05Feedback" class="invalid-feedback">
+            Please fill the field.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress2">Address 2</label>
+          <input type="text" formControlName="addressline2" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+          <div *ngIf="!leadForm.get('addressline2').valid && leadForm.get('addressline2').touched" id="validationServer05Feedback" class="invalid-feedback">
+            Please fill the field.
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputCity">City</label>
+            <input type="text" formControlName="city" class="form-control" id="inputCity">
+            <div *ngIf="!leadForm.get('city').valid && leadForm.get('city').touched" id="validationServer05Feedback" class="invalid-feedback">
+              Please fill the field.
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">State</label>
+            <select formControlName="state" id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+            <div *ngIf="!leadForm.get('state').valid && leadForm.get('state').touched" id="validationServer05Feedback" class="invalid-feedback">
+              Please fill the field.
+            </div>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputZip">Zip</label>
+            <input type="text" formControlName="zip" class="form-control" id="inputZip">
+            <div *ngIf="!leadForm.get('zip').valid && leadForm.get('zip').touched" id="validationServer05Feedback" class="invalid-feedback">
+              Please fill the field.
+            </div>
+          </div>
+        </div>
+
+      <div class="form-group col-md-6">
+        <label for="vat">Vat Number</label>
+        <input id="vat" class="form-control" formControlName="vat" name="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+        <div *ngIf="!leadForm.get('vat').valid && leadForm.get('vat').touched" id="validationServer05Feedback" class="invalid-feedback">
+          Please fill the field.
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col">
+      <label for="content" class="font-weight-bolder">Contact Person</label>
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom01">First name</label>
+        <input type="text" formControlName="firstname" class="form-control" id="validationCustom01" value="">
+        <div *ngIf="!leadForm.get('firstname').valid && leadForm.get('firstname').touched" id="validationServer05Feedback" class="invalid-feedback">
+          Please fill the field.
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom02">Last name</label>
+        <input type="text" name="" formControlName="lastname" class="form-control" id="validationCustom02" value="">
+        <div *ngIf="!leadForm.get('lastname').valid && leadForm.get('lastname').touched" id="validationServer05Feedback" class="invalid-feedback">
+          Please fill the field.
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Email</label>
+        <input type="email" formControlName="email" name="email" class="form-control" id="inputEmail4">
+        <div *ngIf="!leadForm.get('email').valid && leadForm.get('email').touched" id="validationServer05Feedback" class="invalid-feedback">
+          Please fill the field.
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="phone">Enter your phone number:</label>
+        <input type="text" class="form-control" formControlName="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+        <p>Format: 123-456-7890</p>
+        <div *ngIf="!leadForm.get('tel').valid && leadForm.get('tel').touched" id="validationServer05Feedback" class="invalid-feedback">
+          Please fill the field.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="leadForm.controls['customername' && 'addressline1' && 'addressline2' && 'city' && 'state' && 'zip' && 'vat' && 'firstname' && 'lastname' && 'email' && 'tel' ].invalid" class="btn btn-secondary float-right">Submit</button>
+  <!-- <button type="submit" [disabled]="leadForm.invalid" class="btn btn-secondary float-right">Submit</button> -->
+</form>
+
+
+<!-- <div class="col-md-6 mb-3">
+          <mat-form-field appearance="fill">
+            <label for="validationCustom01">Customer name</label>
+            <input type="text" class="form-control" formControlName="customername" id="validationCustom01" value="" matInput [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+            <div *ngIf="!leadForm.get('customername').valid && leadForm.get('customername').touched" id="validationServer05Feedback" class="invalid-feedback">
+              Please fill the field.
+            </div>
+          </mat-form-field>
+        </div> -->

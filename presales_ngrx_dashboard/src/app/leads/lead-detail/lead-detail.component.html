@@ -1,0 +1,119 @@
+<form class="container mt-5" [formGroup]="leadForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col">
+      <label for="customercontent" class="font-weight-bolder">Customer</label>
+      <div class="form-group">
+        <label for="validationCustom01">Customer name</label>
+        <input  type="text" placeholder="Customer Name" class="form-control " formControlName="customername"  id="validationCustom01" list="customers" value="">
+        <div *ngIf="submitted && leadForm.controls.customername.errors" id="validationServer05Feedback" class="invalidfeedback">
+          <div *ngIf="leadForm.controls.customername.errors.required">You must fill the field!</div>
+        </div>
+        <!-- <datalist id="customers" >
+            <option *ngFor="let customer of customers" >{{customer.projectName}}</option>
+        </datalist> -->
+      </div>
+
+      <div class="form-group">
+        <label for="inputAddress">Address</label>
+        <input type="text" formControlName="addressline1" class="form-control" id="inputAddress" placeholder="Type Address">
+        <div *ngIf="submitted && leadForm.controls.addressline1.errors" id="validationServer05Feedback" class="invalidfeedback">
+          <div *ngIf="leadForm.controls.addressline1.errors.required">You must fill the field!</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress2">Address 2</label>
+        <input type="text" formControlName="addressline2" class="form-control" id="inputAddress2" placeholder="Type Address">
+        <div *ngIf="submitted && leadForm.controls.addressline2.errors" id="validationServer05Feedback" class="invalidfeedback">
+          <div *ngIf="leadForm.controls.addressline2.errors.required">You must fill the field!</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputCity">Country</label>
+          <select formControlName="country" id="inputCountry" class="form-control">
+            <option selected>Choose a country</option>
+            <option *ngFor="let country of countries">{{country.name}}</option>
+          </select>
+
+          <div *ngIf="submitted && leadForm.controls.country.errors" id="validationServer05Feedback" class="invalidfeedback">
+            <div *ngIf="leadForm.controls.country.errors.required">You must fill the field!</div>
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputCity">City</label>
+          <input type="text" placeholder="Choose a city" formControlName="city" class="form-control" id="inputCity">
+          <div *ngIf="submitted && leadForm.controls.city.errors" id="validationServer05Feedback" class="invalidfeedback">
+            <div *ngIf="leadForm.controls.city.errors.required">You must fill the field!</div>
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">State</label>
+          <input type="text" placeholder="Choose a state" formControlName="state" class="form-control" id="inputState">
+          <div *ngIf="submitted && leadForm.controls.state.errors" id="validationServer05Feedback" class="invalidfeedback">
+            <div *ngIf="leadForm.controls.state.errors.required">You must fill the field!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputZip">Zip</label>
+          <input type="text" placeholder="Type a zip code" formControlName="zip" class="form-control" id="inputZip">
+          <div *ngIf="submitted && leadForm.controls.zip.errors" id="validationServer05Feedback" class="invalidfeedback">
+            <div *ngIf="leadForm.controls.zip.errors.required">You must fill the field!</div>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="vat">Vat Number</label>
+          <input (keypress)="numberOnly($event)" type="text" id="vat" placeholder="Type your vat number" class="form-control" formControlName="vat" name="number">
+          <div *ngIf="submitted && leadForm.controls.vat.errors" id="validationServer05Feedback" class="invalidfeedback">
+            <div *ngIf="leadForm.controls.vat.errors.required">You must fill the field!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <label for="content" class="font-weight-bolder">Contact Person</label>
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom01">First name</label>
+        <input type="text" placeholder="First name" formControlName="firstname" class="form-control" id="validationCustom01" value="">
+        <div *ngIf="submitted && leadForm.controls.firstname.errors" id="validationServer05Feedback" class="invalidfeedback">
+          <div *ngIf="leadForm.controls.firstname.errors.required">You must fill the field!</div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom02">Last name</label>
+        <input type="text" placeholder="Last name" name="" formControlName="lastname" class="form-control" id="validationCustom02" value="">
+        <div *ngIf="submitted && leadForm.controls.lastname.errors" id="validationServer05Feedback" class="invalidfeedback">
+          <div *ngIf="leadForm.controls.lastname.errors.required">You must fill the field!</div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Email</label>
+        <input type="email" formControlName="email" name="email" placeholder="Type an email" class="form-control" id="inputEmail4">
+        <div *ngIf="submitted && leadForm.controls.email.errors" id="validationServer05Feedback" class="invalidfeedback">
+          <div *ngIf="leadForm.controls.email.errors.required">Email is required!</div>
+          <div *ngIf="leadForm.controls.email.errors.email">Email must be a valid email address</div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="phone">Enter your phone number:</label>
+        <input (keypress)="keyPress($event)" type="text" placeholder="Enter your phone number" class="form-control" formControlName="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+        <div *ngIf="submitted && leadForm.controls.tel.errors" id="validationServer05Feedback" class="invalidfeedback">
+          <div *ngIf="submitted && leadForm.controls.tel.errors.required">You must fill the field!</div>
+          <div *ngIf="leadForm.controls.tel.errors.pattern || leadForm.controls.tel.errors.maxlength || leadForm.controls.tel.errors.minlength">Phone number must be at least 10 numbers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <button type="submit" [disabled]="leadForm.controls['customername' && 'addressline1' && 'addressline2' && 'city' && 'state' && 'zip' && 'vat' && 'firstname' && 'lastname' && 'email' && 'tel' ].invalid" class="btn btn-secondary float-right">Submit</button> -->
+  <button type="submit" class="btn btn-secondary float-right">Submit</button>
+</form>
+
+
+<p>{{this.leadForm.value | json}}</p>
+
+
+
+

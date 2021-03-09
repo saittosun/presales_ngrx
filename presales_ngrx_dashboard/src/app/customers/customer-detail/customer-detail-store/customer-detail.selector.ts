@@ -4,7 +4,7 @@ import * as fromCustomerDetail from './customer-detail.reducer'
 export interface State {
   customerDetailFeature: fromCustomerDetail.CustomerDetailState;
 }
-export const reducers: ActionReducerMap<State> = {
+export const reducer: ActionReducerMap<State> = {
   customerDetailFeature: fromCustomerDetail.CustomerDetailReducer,
 };
 

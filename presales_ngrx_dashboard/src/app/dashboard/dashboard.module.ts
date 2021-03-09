@@ -3,17 +3,17 @@ import { NgModule } from "@angular/core";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 
-import { leadReducers } from "./store/dashboard.reducer";
-// import { LeadEffects } from "./store/dashboard.effect";
-import { LeadService } from "./services/lead.service";
-// import { LeadsFacade } from "./facades/dashboard.facade";
+// import { LeadService } from "./lead-store/lead.service";
+// import { LeadEffect } from "./lead-store/lead.effect";
+// import { LeadReducer } from "./lead-store/lead.reducer";
+// import { LeadFacade } from "./lead-store/lead.facade";
 
 @NgModule({
   imports: [
-    CommonModule,
-    StoreModule.forFeature("leads", leadReducers),
-    // EffectsModule.forFeature([LeadEffects])
+    // CommonModule,
+    // StoreModule.forFeature("leads", LeadReducer),
+    // EffectsModule.forFeature([LeadEffect])
   ],
-  // providers: [LeadEffects, LeadService, LeadsFacade]
+  // providers: [LeadEffect, LeadService, LeadFacade]
 })
 export class DashboardModule {}

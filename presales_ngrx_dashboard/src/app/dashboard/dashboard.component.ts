@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     this.store.loadCustomers();
     this.customers$ = this.store.allLeads$;
-    console.log(this.customers$);
   }
 
 

@@ -1,5 +1,5 @@
 import { LeadService } from './dashboard/lead-store/lead.service';
-import { reducers } from './dashboard/lead-store/index';
+import { reducers } from './dashboard/lead-store/lead.selector';
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';

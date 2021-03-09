@@ -1,4 +1,4 @@
-import { getProducts } from './index';
+import { getProducts } from './lead.selector';
 import { Load } from './lead.action';
 import { select } from '@ngrx/store';
 import { Injectable } from '@angular/core';

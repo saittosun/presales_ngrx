@@ -17,7 +17,6 @@ import { LeadService } from './lead.service';
 @Injectable()
 export class LeadEffect {
 
-
   constructor(private leadService: LeadService,
               private action$: Actions,
               private store: Store<any>) {

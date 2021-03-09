@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Customer } from '../models/customer';
 import { LeadFacade } from './lead-store/lead.facade';
@@ -12,7 +13,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   customers$: Observable<Customer[]>;
   customersSub: Subscription;
 
-  constructor(private store: LeadFacade) { }
+  constructor(private store: LeadFacade,
+              private router: Router) { }
 
   ngOnInit(): void {
 
@@ -20,9 +22,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.customers$ = this.store.allLeads$;
   }
 
+  onLeadDetail() {
+    this.router.navigate(['/new/customer-detail'])
+  }
 
   ngOnDestroy(): void {
-    this.customersSub.unsubscribe();
+    // this.customersSub.unsubscribe();
   }
 
 }

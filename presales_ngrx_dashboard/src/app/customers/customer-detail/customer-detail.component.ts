@@ -1,4 +1,7 @@
+import { CustomerDetail } from './../../models/customer-detail.interface';
 import { Component, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { CustomerDetailFacade } from './customer-detail-store/customer-detail.facade';
 
 @Component({
   selector: 'app-customer-detail',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerDetailComponent implements OnInit {
 
-  constructor() { }
+  customers$: Observable<CustomerDetail[]>;
+  customersSub: Subscription;
+
+  constructor(private store: CustomerDetailFacade) { }
 
   ngOnInit(): void {
+
+    this.store.loadCustomers();
+    this.customers$ = this.store.allCustomers$;
+    console.log(this.store.allCustomers$);
+
+  }
+
+  ngOnDestroy(): void {
+    // this.customersSub.unsubscribe();
   }
 
 }

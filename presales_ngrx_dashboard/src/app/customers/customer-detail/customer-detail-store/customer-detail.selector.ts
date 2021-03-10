@@ -23,3 +23,10 @@ export const getLoaded = createSelector(
     return state.loaded
   }
 );
+
+export const getItemById = (id) => createSelector(
+  getCustomerFeatureState,
+  state => {
+    return state.customers[id]
+  }
+);

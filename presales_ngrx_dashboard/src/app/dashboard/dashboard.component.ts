@@ -46,6 +46,7 @@ import { Subject } from 'rxjs';
 export class DashboardComponent implements OnInit, OnDestroy {
   customers: Customer[] = [];
   private destroyed$ = new Subject<boolean>();
+  id: number;
 
   constructor(private apiService: ApiService) { }
 
@@ -54,6 +55,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroyed$))
       .subscribe(response => {
       this.customers = response;
+      console.log(this.customers[0].id);
     })
   }
 

@@ -1,3 +1,4 @@
+import { CustomerDetailApi } from './../../../models/customer.detail';
 import { CustomerDetail } from './../../../models/customer-detail.interface';
 import { CustomerDetailActions, CustomerDetailActionTypes } from "./customer-detail.action";
 

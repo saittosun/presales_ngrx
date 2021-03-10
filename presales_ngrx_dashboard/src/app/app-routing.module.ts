@@ -10,7 +10,7 @@ import { CustomerDetailComponent } from './customers/customer-detail/customer-de
 
 const routes: Routes = [
   { path: 'new/lead-detail', component: LeadDetailComponent},
-  { path: 'new/customer-detail', component: CustomerDetailComponent},
+  { path: 'customer-detail/:id', component: CustomerDetailComponent},
   { path: 'leads', component: LeadsComponent },
   { path: 'customers', component: CustomersComponent },
   { path: '', component: DashboardComponent },

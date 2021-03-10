@@ -1,3 +1,4 @@
+
 // import { LeadService } from './dashboard/lead-store/lead.service';
 // import { reducers } from './dashboard/lead-store/lead.selector';
 // import { reducer } from './customers/customer-detail/customer-detail-store/customer-detail.selector';
@@ -58,6 +59,7 @@
 // export class AppModule { }
 
 import { reducer } from './customers/customer-detail/customer-detail-store/customer-detail.selector';
+import { CustomerDetailReducer } from './customers/customer-detail/customer-detail-store/customer-detail.reducer';
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
@@ -100,7 +102,7 @@ import { CustomerDetailService } from './customers/customer-detail/customer-deta
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    StoreModule.forRoot(reducer),
+    StoreModule.forRoot({customerDetail: CustomerDetailReducer }),
     EffectsModule.forRoot([CustomerDetailEffect]),
     ReactiveFormsModule,
     MatAutocompleteModule,

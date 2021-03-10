@@ -1,4 +1,3 @@
-import { CustomerDetailApi } from './../../../models/customer.detail';
 import { CustomerDetail } from './../../../models/customer-detail.interface';
 import { CustomerDetailActions, CustomerDetailActionTypes } from "./customer-detail.action";
 
@@ -9,7 +8,23 @@ export interface CustomerDetailState {
 }
 
 const initialState: CustomerDetailState = {
-  customers: [],
+  customers: [
+    {
+      id: 1,
+      customername: 'denderleeuw',
+      addressline1: 'Nova',
+      addressline2: 'offer',
+      city: 'denderleeuw',
+      country: 'België',
+      state: 'oost-vlanderen',
+      zip: '111',
+      vat: 111,
+      firstname: 'sait',
+      lastname: 'tosun',
+      email: 'test@test.com',
+      phonenumber: 999999999
+    }
+  ],
   loaded: false,
   error: ''
 };

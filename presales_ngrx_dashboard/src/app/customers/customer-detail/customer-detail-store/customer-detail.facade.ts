@@ -12,16 +12,16 @@ import * as fromApp from "./customer-detail.reducer";
 })
 
 export class CustomerDetailFacade {
-  // allCustomers$: Observable<CustomerDetail[]> = this.store.pipe(select(getCustomers))
+  allCustomers$: Observable<CustomerDetail[]> = this.store.pipe(select(getCustomers))
 
-  allCustomers$: Observable<{customers: CustomerDetail[]}>;
+  // allCustomers$: Observable<{customers: CustomerDetail[]}>;
 
-  // constructor(private store: Store<fromApp.CustomerDetailState>) { }
-  constructor(private store: Store<{customerDetail: {customers: CustomerDetail[]}}>) { }
+  constructor(private store: Store<fromApp.CustomerDetailState>) { }
+  // constructor(private store: Store<{customerDetail: {customers: CustomerDetail[]}}>) { }
 
   loadCustomers() {
     this.store.dispatch(new Load())
-    this.allCustomers$ = this.store.select('customerDetail')
+    // this.allCustomers$ = this.store.select('customerDetail')
   }
 
 }

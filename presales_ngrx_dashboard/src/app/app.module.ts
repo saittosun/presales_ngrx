@@ -102,7 +102,7 @@ import { CustomerDetailService } from './customers/customer-detail/customer-deta
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    StoreModule.forRoot({customerDetail: CustomerDetailReducer }),
+    StoreModule.forRoot(reducer),
     EffectsModule.forRoot([CustomerDetailEffect]),
     ReactiveFormsModule,
     MatAutocompleteModule,

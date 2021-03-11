@@ -59,7 +59,6 @@
 // export class AppModule { }
 
 import { reducer } from './customers/customer-detail/customer-detail-store/customer-detail.selector';
-import { CustomerDetailReducer } from './customers/customer-detail/customer-detail-store/customer-detail.reducer';
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
@@ -83,6 +82,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { CustomerDetailService } from './customers/customer-detail/customer-detail-store/customer-detail.service';
+import { reducers } from './dashboard/lead-store/lead.selector';
 
 
 @NgModule({

@@ -28,6 +28,8 @@ export class LoadFail implements Action {
 
 }
 
+
+
 // Union the valid types
 export type CustomerDetailActions = Load
   | LoadSuccess

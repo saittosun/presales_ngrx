@@ -1,6 +1,6 @@
 import { CustomerDetail } from './../../../models/customer-detail.interface';
 import { getCustomers } from './customer-detail.selector';
-import { Load } from './customer-detail.action';
+import { Load, LoadSuccess } from './customer-detail.action';
 import { select } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -23,5 +23,11 @@ export class CustomerDetailFacade {
     this.store.dispatch(new Load())
     // this.allCustomers$ = this.store.select('customerDetail')
   }
+
+  updateCustomers(customers: CustomerDetail[]) {
+    this.store.dispatch(new LoadSuccess(customers))
+  }
+
+
 
 }

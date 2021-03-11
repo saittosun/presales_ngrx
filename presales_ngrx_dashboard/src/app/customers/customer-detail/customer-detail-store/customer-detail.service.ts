@@ -2,25 +2,15 @@ import { CustomerDetailApi } from './../../../models/customer.detail';
 import { CustomerDetail } from './../../../models/customer-detail.interface';
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs/internal/Observable";
-import { catchError, map } from "rxjs/operators";
-
 import {throwError} from "rxjs/internal/observable/throwError";
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class CustomerDetailService {
-  private _customerSub = new BehaviorSubject<CustomerDetail[]>( new CustomerDetailApi().customerDetails)
 
   constructor() {}
 
   getCustomers(): Observable<CustomerDetail[]> {
-  return this._customerSub
-    .pipe(
-      map((data) => {
-        return data
-      }),
-      catchError(this.handleError)
-    );
+    return new CustomerDetailApi().customerDetails;
   }
 
   private handleError(err) {
